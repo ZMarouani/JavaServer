@@ -41,12 +41,12 @@ public class FileServer {
                         printer.write("HTTP/1.0 200 ok\r\n");
                         printer.write(".\r\n");
                         printer.write(new String(Files.readAllBytes(fullPath.toPath())) + "\r\n");
-                        printer.flush();
+                        printer.println(inputLine);
                     } else {
                         printer.write("Http/1.0 404 Not Found\r\n");
                         printer.write(".\r\n");
-                        printer.flush();
                     }
+                    printer.flush();
                 }
             }
         }
