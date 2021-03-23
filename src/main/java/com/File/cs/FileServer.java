@@ -1,4 +1,4 @@
-package com.File.server;
+package com.File.cs;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -29,6 +29,8 @@ public class FileServer {
                 assert inputLine != null;
                 assert inputLine.startsWith("GET");
 
+                if (inputLine.equalsIgnoreCase("exit")) break ;
+
                 final String path = inputLine.split(" ")[1];
                 final File fullPath = new File(rootDir, path);
 
@@ -44,7 +46,6 @@ public class FileServer {
                         printer.write("Http/1.0 404 Not Found\r\n");
                         printer.write(".\r\n");
                         printer.flush();
-                        break ;
                     }
                 }
             }
